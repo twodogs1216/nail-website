@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美甲网站</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #F4E7E1;
+            color: #333;
+        }
+
+        header {
+            background-color: #FFD4D0;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-controls button {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            background-color: #FFF;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 200px;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-card button {
+            background-color: #EEC5C0;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .product-card button:hover {
+            background-color: #D9A5A1;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: #FFD4D0;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .carousel {
+                height: 200px;
+            }
+
+            .product-card {
+                max-width: 150px;
+            }
+
+            .product-card button {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            header {
+                font-size: 20px;
+                padding: 15px;
+            }
+
+            .carousel {
+                height: 150px;
+            }
+
+            .product-card {
+                max-width: 100px;
+            }
+
+            .product-card button {
+                padding: 6px 10px;
+                font-size: 10px;
+            }
+        }
+    </style>
+    <script>
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel img');
+            slides.forEach((slide, i) => {
+                slide.style.transform = `translateX(${(i - index) * 100}%)`;
+            });
+        }
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('.carousel img');
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            const slides = document.querySelectorAll('.carousel img');
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        window.onload = () => {
+            showSlide(currentIndex);
+        };
+    </script>
+</head>
+<body>
+    <header>欢迎来到美甲网站</header>
+
+    <div class="carousel">
+        <img src="https://via.placeholder.com/800x300/FFC0CB/FFFFFF?text=图片1" alt="图片1">
+        <img src="https://via.placeholder.com/800x300/FFDAB9/FFFFFF?text=图片2" alt="图片2">
+        <img src="https://via.placeholder.com/800x300/F5DEB3/FFFFFF?text=图片3" alt="图片3">
+        <div class="carousel-controls">
+            <button onclick="prevSlide()">❮</button>
+            <button onclick="nextSlide()">❯</button>
+        </div>
+    </div>
+
+    <section class="products">
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200x150" alt="美甲产品1">
+            <h3>美甲产品1</h3>
+            <p>¥99.00</p>
+            <button onclick="location.href='product1.html'">购买</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200x150" alt="美甲产品2">
+            <h3>美甲产品2</h3>
+            <p>¥199.00</p>
+            <button onclick="location.href='product2.html'">购买</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200x150" alt="美甲产品3">
+            <h3>美甲产品3</h3>
+            <p>¥299.00</p>
+            <button onclick="location.href='product3.html'">购买</button>
+        </div>
+    </section>
+
+    <footer>版权所有 &copy; 2024 美甲店</footer>
+</body>
+</html>
